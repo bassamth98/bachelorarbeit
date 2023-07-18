@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Clone Repository') {
+      steps {
+        // Cloning the repository
+        git branch: 'master', url:'https://github.com/bassamth98/bachelorarbeit.git'
+      }
+    }
+    
+    stage('Deploy with Docker Compose') {
+      steps {
+        // Deploying with Docker Compose
+        sh 'docker-compose up -d'
+      }
+    }
+  }
+}
